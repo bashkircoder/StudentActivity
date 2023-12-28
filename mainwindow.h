@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <data.h>
+#include "dialogwindow.h"
+#include "deletewindow.h"
+
 
 #include <QMainWindow>
 
@@ -18,8 +21,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private:
+  private:
     Ui::MainWindow *ui;
+
+    DialogWindow *dialog;
+    DeleteWindow *del;
 
     Data* data;
 
@@ -32,5 +38,8 @@ private slots:
     void exit();
 
 
+    void on_pushButtonAdd_clicked();
+
+    void on_pushButton_clicked();
 };
 #endif // MAINWINDOW_H

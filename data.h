@@ -18,6 +18,8 @@ public:
     const QList<student> GetALL() const;
     const QList<student> FindByStudentName(QString student_name) const;
     const QList<student> FindBySubject(QString subject) const;
+    void AddStudent(QString name, QString subject, QString marks);
+    void DeleteStudent(QString name);
 
 
 };

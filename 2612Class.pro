@@ -10,16 +10,22 @@ CONFIG += c++17
 
 SOURCES += \
     data.cpp \
+    deletewindow.cpp \
+    dialogwindow.cpp \
     main.cpp \
     mainwindow.cpp \
     student.cpp
 
 HEADERS += \
     data.h \
+    deletewindow.h \
+    dialogwindow.h \
     mainwindow.h \
     student.h
 
 FORMS += \
+    deletewindow.ui \
+    dialogwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

@@ -52,7 +52,7 @@ const QList<student> Data::FindByStudentName(QString student_name) const
 
     }
 
-    auto sql = "SELECT id, full_name, subject_matter, assessments FROM students_table WHERE full_name = '" + student_name + "'";
+    auto sql = "SELECT id, full_name, subject_matter, assessments FROM students_table WHERE full_name LIKE '" + student_name + "%'";
     QSqlQuery query(sql);
     while (query.next()){
 
@@ -80,7 +80,7 @@ const QList<student> Data::FindBySubject(QString subject) const
 
     }
 
-    auto sql = "SELECT id, full_name, subject_matter, assessments FROM students_table WHERE subject_matter = '"  + subject + "'";
+    auto sql = "SELECT id, full_name, subject_matter, assessments FROM students_table WHERE subject_matter LIKE '%"  + subject + "%'";
     QSqlQuery query(sql);
     while (query.next()){
 
@@ -95,6 +95,40 @@ const QList<student> Data::FindBySubject(QString subject) const
     db.close();
 
     return students;
+}
+
+void Data::AddStudent(QString name, QString subject, QString marks)
+{
+
+    auto db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(input_path);
+
+    if (!db.open()){
+
+    }
+
+    auto sql = "INSERT INTO students_table (full_name, subject_matter, assessments) VALUES ('" + name + "', '" + subject + "', '" + marks + "');";
+    QSqlQuery query(sql);
+
+    db.close();
+
+}
+
+void Data::DeleteStudent(QString name)
+{
+
+    auto db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(input_path);
+
+    if (!db.open()){
+
+    }
+
+    auto sql = "DELETE FROM students_table WHERE full_name LIKE '%" + name + "%';";
+    QSqlQuery query(sql);
+
+    db.close();
+
 }
 
 
